@@ -1,7 +1,6 @@
-import Colors from './Colors'
-import Fonts from './Fonts'
-import Metrics from './Metrics'
-import Images from './Images'
-import ApplicationStyles from './ApplicationStyles'
+import colors from './colors'
+import fonts from './fonts'
+import commonStyles from './common'
+import dimension from './dimension'
 
-export { Colors, Fonts, Images, Metrics, ApplicationStyles }
+export { colors, fonts, commonStyles, dimension }

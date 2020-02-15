@@ -1,30 +1,29 @@
-import React, { Component } from 'react'
-import { View, StatusBar } from 'react-native'
-import ReduxNavigation from '../Navigation/ReduxNavigation'
-import { connect } from 'react-redux'
-import StartupActions from '../Redux/StartupRedux'
+import React, { Component } from "react";
+import { View, StatusBar, StyleSheet } from "react-native";
+import Navigator from "../Navigation/Navigator";
 
-// Styles
-import styles from './Styles/RootContainerStyles'
+import { width, modalHeaderMargin } from "../Themes/dimension";
+import colors from "../Themes/colors";
 
 class RootContainer extends Component {
-  componentDidMount () {
-    this.props.startup()
-  }
-
-  render () {
+  render() {
     return (
       <View style={styles.applicationView}>
-        <StatusBar barStyle='light-content' />
-        <ReduxNavigation />
+        <StatusBar barStyle="light-content" />
+        <View style={styles.headerMarginStyle} />
+        <Navigator />
       </View>
-    )
+    );
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
-const mapDispatchToProps = (dispatch) => ({
-  startup: () => dispatch(StartupActions.startup())
-})
+const styles = StyleSheet.create({
+  applicationView: { flex: 1 },
+  headerMarginStyle: {
+    width,
+    height: modalHeaderMargin,
+    backgroundColor: colors.headerBarColor
+  }
+});
 
-export default connect(null, mapDispatchToProps)(RootContainer)
+export default RootContainer

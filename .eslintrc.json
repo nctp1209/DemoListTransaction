@@ -1,0 +1,27 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "plugins": [
+    "import",
+    "node",
+    "promise",
+    "standard"
+  ],
+  "globals": {
+    "document": "readonly",
+    "navigator": "readonly",
+    "window": "readonly"
+  },
+  "rule": {
+    "space-before-function-paren": ["error", "never"]
+  }
+}
