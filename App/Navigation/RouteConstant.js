@@ -1,4 +1,3 @@
 export default {
-  Main: "Main",
-  FavouriteList: "FavouriteList"
+  Main: "Main"
 };
