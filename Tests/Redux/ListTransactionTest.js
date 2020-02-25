@@ -10,9 +10,9 @@ test('getListTransactionRequestTest', () => {
   const state = reducer(
     INITIAL_STATE,
     ListTransactionActions.getListTransactionRequest()
-  );
+  )
   expect(state.processing).toBe(true)
-});
+})
 
 test('getListTransactionSuccessTest', () => {
   const result = Api.getListTransaction();
@@ -44,17 +44,20 @@ test('refundTransactionRequest', () => {
   })
   const newListTransaction = Object.assign(SampleData, { items: newListTransactionsItems })
 
-  const result = Api.getListTransaction();
-  const state = reducer(
-    INITIAL_STATE,
-    ListTransactionActions.getListTransactionSuccess(result)
-  )
-
   // Get list transaction
+  const resultGetListTransaction = Api.getListTransaction();
+  let state = reducer(
+    INITIAL_STATE,
+    ListTransactionActions.getListTransactionSuccess(resultGetListTransaction)
+  )
   expect(state.processing).toBe(false)
-  expect(state.listTransaction).toMatchObject(result)
+  expect(state.listTransaction).toMatchObject(resultGetListTransaction)
 
   // Refund a transaction
+  state = reducer(
+    state,
+    ListTransactionActions.refundTransactionRequest(firstItems.id)
+  )
   expect(state.processing).toBe(false)
   expect(state.listTransaction).toMatchObject(newListTransaction)
 })
