@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, FlatList, StyleSheet, ActivityIndicator, Alert } from 'react-native';
 
 import Header from '../../Components/Header/Header';
 import TransactionItem from '../../Components/TransactionItem';
@@ -20,7 +20,20 @@ class Main extends Component {
 
   onRefundPress(tranId) {
     const { refundTransactionRequest } = this.props;
-    if (tranId) refundTransactionRequest(tranId);
+    if (tranId) {
+      Alert.alert(
+        'Refune transaction',
+        'Are you sure to refund this transaction?',
+        [
+          {
+            text: 'Yes', onPress: () => refundTransactionRequest(tranId)
+          },
+          {
+            text: 'Cancel'
+          }
+        ]
+      )
+    }
   }
 
   renderListTransaction() {
